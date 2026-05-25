@@ -79,7 +79,8 @@ function MonthlyReportTab() {
   const [selectedMember, setSelectedMember] = useState<MemberContributionRow | null>(null);
 
   const period = toYearMonth(year, month);
-  const { data: summary, isLoading, error } = useGetMonthlySummaryQuery(period);
+  const { data: summary, isLoading: summaryLoading, error } = useGetMonthlySummaryQuery(period);
+  const isLoading = summaryLoading as boolean;
 
   const filtered = useMemo(() => {
     if (!summary) return [];
