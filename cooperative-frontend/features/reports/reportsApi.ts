@@ -66,20 +66,25 @@ export interface MembershipReport {
   deathExits: number;
 }
 
+export interface ReportQueryParams {
+  startDate?: string;
+  endDate?: string;
+}
+
 export const reportsApi = createApi({
   reducerPath: 'reportsApi',
   baseQuery,
   tagTypes: ['Report'],
   keepUnusedDataFor: 300,
   endpoints: (builder) => ({
-    getFinancialReport: builder.query<FinancialReport, void>({
-      query: () => ({ url: '/api/reports/financial' }),
+    getFinancialReport: builder.query<FinancialReport, ReportQueryParams | void>({
+      query: (params) => ({ url: '/api/reports/financial', params: params ?? {} }),
     }),
-    getLoanPortfolioReport: builder.query<LoanPortfolioReport, void>({
-      query: () => ({ url: '/api/reports/loan-portfolio' }),
+    getLoanPortfolioReport: builder.query<LoanPortfolioReport, ReportQueryParams | void>({
+      query: (params) => ({ url: '/api/reports/loan-portfolio', params: params ?? {} }),
     }),
-    getMembershipReport: builder.query<MembershipReport, void>({
-      query: () => ({ url: '/api/reports/membership' }),
+    getMembershipReport: builder.query<MembershipReport, ReportQueryParams | void>({
+      query: (params) => ({ url: '/api/reports/membership', params: params ?? {} }),
     }),
   }),
 });

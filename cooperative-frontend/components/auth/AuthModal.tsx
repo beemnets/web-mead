@@ -180,7 +180,6 @@ export default function AuthModal({ onClose }: AuthModalProps) {
             className="w-full py-3 text-sm font-semibold text-white rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{
               backgroundColor: '#0A2E5C',
-              focusRingColor: '#0A2E5C',
             }}
             onMouseOver={(e) => {
               if (!isLoading) {

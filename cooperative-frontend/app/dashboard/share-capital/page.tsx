@@ -30,7 +30,10 @@ export default function ShareCapitalPage() {
     selectedMemberId, { skip: !selectedMemberId }
   );
   const { data: passbook, isLoading: passbookLoading, error: passbookError, refetch: refetchPassbook } =
-    useGetMemberPassbookQuery(selectedMemberId, { skip: !selectedMemberId });
+    useGetMemberPassbookQuery(
+      { memberId: selectedMemberId },
+      { skip: !selectedMemberId }
+    );
   const { data: shareSummary } = useGetShareSummaryQuery();
 
   // Filter passbook transactions
@@ -168,14 +171,14 @@ export default function ShareCapitalPage() {
               </button>
             </div>
 
-            {/* Recent Transactions */}
-            {shareSummary.recentTransactions && shareSummary.recentTransactions.length > 0 && (
+            {/* Recent Transactions - hidden as recentTransactions not in ShareSummary type */}
+            {(shareSummary as any).recentTransactions && (shareSummary as any).recentTransactions.length > 0 && (
               <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100">
                   <h3 className="text-sm font-semibold text-gray-900">Recent Share Transactions</h3>
                 </div>
                 <div className="divide-y divide-gray-100">
-                  {shareSummary.recentTransactions.map((tx: any) => (
+                  {(shareSummary as any).recentTransactions.map((tx: any) => (
                     <div key={tx.id} className="px-5 py-4 flex items-center justify-between hover:bg-gray-50">
                       <div className="flex items-center gap-3">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${

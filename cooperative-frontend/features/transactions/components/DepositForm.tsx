@@ -66,7 +66,7 @@ export function DepositForm({ accountId: fixedAccountId, onSuccess }: Props) {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">Select Account</label>
             <MemberAccountPicker
-              onAccountSelected={(id, acc) => { setSelectedAccountId(id); setSelectedAccount(acc); setErrorMsg(''); }}
+              onAccountSelected={(id, acc) => { setSelectedAccountId(id); setSelectedAccount(acc); }}
             />
           </div>
         )}
@@ -92,7 +92,7 @@ export function DepositForm({ accountId: fixedAccountId, onSuccess }: Props) {
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium">ETB</span>
             <CurrencyInput
               value={amount}
-              onChange={(v) => { setAmount(v); setErrorMsg(''); }}
+              onChange={(v) => { setAmount(v); }}
               className="w-full pl-14 pr-4 py-3 rounded-lg border border-gray-200 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all"
               placeholder="0"
             />
