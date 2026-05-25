@@ -34,7 +34,7 @@ export const documentsApi = createApi({
 
           return { data: await res.json() };
         } catch (e: any) {
-          return { error: { status: 'FETCH_ERROR', data: e.message } };
+          return { error: { status: 0, data: e.message } };
         }
       },
       invalidatesTags: ['Document'],

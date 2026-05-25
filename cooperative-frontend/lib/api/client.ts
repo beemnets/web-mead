@@ -91,7 +91,11 @@ interface BaseQueryArgs {
   params?: any;
 }
 
-export const baseQuery: BaseQueryFn<BaseQueryArgs, unknown, unknown> = async ({
+export const baseQuery: BaseQueryFn<
+  BaseQueryArgs,
+  unknown,
+  { status?: number; data?: unknown }
+> = async ({
   url,
   method = 'GET',
   body,
