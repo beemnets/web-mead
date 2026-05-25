@@ -89,6 +89,8 @@ export const payrollApi = createApi({
     getMonthlySummary: builder.query<MonthlySummary, string>({
       query: (month) => ({ url: '/api/payroll/monthly-summary', params: { month } }),
       providesTags: ['DeductionList'],
+      // Ensure isLoading is always boolean
+      transformResponse: (response: MonthlySummary) => response,
     }),
   }),
 });

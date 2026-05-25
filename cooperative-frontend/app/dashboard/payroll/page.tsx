@@ -80,7 +80,7 @@ function MonthlyReportTab() {
 
   const period = toYearMonth(year, month);
   const { data: summary, isLoading: summaryLoading, error } = useGetMonthlySummaryQuery(period);
-  const isLoading = Boolean(summaryLoading);
+  const isLoading: boolean = summaryLoading === true;
 
   const filtered = useMemo(() => {
     if (!summary) return [];
@@ -350,7 +350,7 @@ function ProcessingTab() {
   const period = toYearMonth(year, month);
 
   const { data: deductionList = [], isLoading: deductionLoading, refetch } = useGetDeductionListQuery(period);
-  const isLoading = Boolean(deductionLoading);
+  const isLoading: boolean = deductionLoading === true;
   const [generateList, { isLoading: generating }] = useGenerateDeductionListMutation();
   const [processConfirmation] = useProcessConfirmationMutation();
   const [reconcile, { isLoading: reconciling }] = useReconcileDeductionsMutation();
